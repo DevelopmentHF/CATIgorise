@@ -33,6 +33,7 @@ def main():
         writer = csv.DictWriter(nfp, fieldnames=fieldnames)
 
         writer.writeheader()
+
         # loop over the rows of data
         for row in reader:
             feedback = row["response"]
@@ -55,7 +56,6 @@ def main():
             # add back to the file
             row["category"] = output
             writer.writerow(row)
-
 
     return 0
 
