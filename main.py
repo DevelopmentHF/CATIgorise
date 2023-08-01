@@ -26,8 +26,12 @@ def main():
     openai.api_key = env.APIKEY
 
     # open the data file
-    with open("test_data.csv") as fp:
+    with open("test_data.csv") as fp, open("new_data.csv", 'w') as nfp:
         reader = csv.DictReader(fp)
+
+        fieldnames = reader.fieldnames  # Retrieve the fieldnames
+        writer = csv.DictWriter(nfp, fieldnames=fieldnames)
+
         # skip the header being used
         next(reader)
         # loop over the rows of data
@@ -43,9 +47,15 @@ def main():
                 ]
             )
 
+            output = response['choices'][0]['message']['content']
+
             print(feedback)
-            print(response['choices'][0]['message']['content'])
+            print(output)
             print("\n----\n")
+
+            # add back to the file
+            row["category"] = output
+            writer.writerow(row)
 
 
     return 0
