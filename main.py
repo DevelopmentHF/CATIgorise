@@ -32,8 +32,7 @@ def main():
         fieldnames = reader.fieldnames  # Retrieve the fieldnames
         writer = csv.DictWriter(nfp, fieldnames=fieldnames)
 
-        # skip the header being used
-        next(reader)
+        writer.writeheader()
         # loop over the rows of data
         for row in reader:
             feedback = row["response"]
