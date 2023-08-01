@@ -10,15 +10,15 @@ CATIgorise currently is based on the action of installing a new gas meter, but t
 To add another category, add it to the `prompt` **variable** in `main.py`.
 You will also need your own API key from OpenAI, and a new file called `env.py` with the following line:
 
+```python
+APIKEY = "YOUR_KEY_HERE" # replace with your own generated key
+```
+
 > Note: The program is based on test data csv file with the format:
 > 
 > id,response,score,category
 > 
 > For actual use, update this to your actual format, but make sure the string component retains the name "response"
-
-```python
-APIKEY = "YOUR_KEY_HERE" # replace with your own generated key
-```
 
 Make sure the inputted data filename is set correctly to your file name:
 
